@@ -1,0 +1,10 @@
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\InterfazEmplames.exe.config
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\InterfazEmplames.exe
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\InterfazEmplames.pdb
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.Properties.Resources.resources
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.csproj.GenerateResource.cache
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.csproj.CoreCompileInputs.cache
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.exe
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.pdb
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.PantallaPrincipal.resources
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.EmpalmeSaldos.resources

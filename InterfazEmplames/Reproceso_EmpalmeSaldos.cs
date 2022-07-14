@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InterfazEmplames
 {
-    public partial class Form1 : Form
+    public partial class Reproceso_EmpalmeSaldos : Form
     {
-        public Form1()
+        public Reproceso_EmpalmeSaldos()
         {
             InitializeComponent();
         }
