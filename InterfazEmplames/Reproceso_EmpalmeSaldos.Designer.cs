@@ -29,10 +29,18 @@ namespace InterfazEmplames
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Reproceso_EmpalmeSaldos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "Reproceso_EmpalmeSaldos";
             this.Text = "Reproceso_EmpalmeSaldos";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
