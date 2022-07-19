@@ -11,3 +11,6 @@ C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\Interf
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.csproj.AssemblyReference.cache
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.Login.resources
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.Reproceso_EmpalmeSaldos.resources
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.Reporte_SaldoVencimientos.resources
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.Vencimientos.resources
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.EmpalmeHoldHou.resources

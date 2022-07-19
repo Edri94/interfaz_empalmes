@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmpalmeHoldHou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpalmeHoldHou.Designer.cs">
+      <DependentUpon>EmpalmeHoldHou.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmpalmeSaldos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,12 +72,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporte_SaldoVencimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_SaldoVencimientos.Designer.cs">
+      <DependentUpon>Reporte_SaldoVencimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reproceso_EmpalmeSaldos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reproceso_EmpalmeSaldos.Designer.cs">
       <DependentUpon>Reproceso_EmpalmeSaldos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vencimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vencimientos.Designer.cs">
+      <DependentUpon>Vencimientos.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="EmpalmeHoldHou.resx">
+      <DependentUpon>EmpalmeHoldHou.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmpalmeSaldos.resx">
       <DependentUpon>EmpalmeSaldos.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,8 +112,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reporte_SaldoVencimientos.resx">
+      <DependentUpon>Reporte_SaldoVencimientos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reproceso_EmpalmeSaldos.resx">
       <DependentUpon>Reproceso_EmpalmeSaldos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vencimientos.resx">
+      <DependentUpon>Vencimientos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
