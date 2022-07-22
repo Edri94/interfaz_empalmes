@@ -8,7 +8,6 @@ C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\Interf
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.pdb
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.PantallaPrincipal.resources
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.EmpalmeSaldos.resources
-C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.csproj.AssemblyReference.cache
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.Login.resources
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.Reproceso_EmpalmeSaldos.resources
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.Reporte_SaldoVencimientos.resources
@@ -38,3 +37,4 @@ C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\Crysta
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\EntityFramework.xml
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.csproj.CopyComplete
+C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll
