@@ -50,6 +50,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -64,6 +65,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ConexionAS400.cs" />
+    <Compile Include="Data\ConexionBD.cs" />
+    <Compile Include="Data\FuncionesBD.cs" />
+    <Compile Include="Helpers\Encriptacion.cs" />
+    <Compile Include="Helpers\Funcion.cs" />
+    <Compile Include="Helpers\Log.cs" />
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\QueryParametro.cs" />
+    <Compile Include="Reports\CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\EmpalmeHoldHou.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +131,10 @@
     <Compile Include="Views\Vencimientos.Designer.cs">
       <DependentUpon>Vencimientos.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\EmpalmeHoldHou.resx">
       <DependentUpon>EmpalmeHoldHou.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,7 +183,9 @@
   <ItemGroup>
     <None Include="Resources\snippet-open-innovation.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

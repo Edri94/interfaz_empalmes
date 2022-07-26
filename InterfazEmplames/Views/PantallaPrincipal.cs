@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfazEmplames.Processes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +11,11 @@ using System.Windows.Forms;
 
 namespace InterfazEmplames
 {
+    
     public partial class PantallaPrincipal : Form
     {
+        public Empalmes empalmes;
+
         bool loggeado;
 
         Login form_login;
@@ -70,6 +74,13 @@ namespace InterfazEmplames
 
         private void PantallaPrincipal_Load(object sender, EventArgs e)
         {
+            empalmes = new Empalmes();
+
+            string lsCommandLine;
+            int lnSpacePoint;
+            string[] Parametros;
+            string rutaIni;
+
             if (form_login == null)
             {
                 form_login = new Login();

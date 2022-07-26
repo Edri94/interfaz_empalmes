@@ -178,6 +178,7 @@ namespace InterfazEmplames
             this.btnExtraer.TabIndex = 3;
             this.btnExtraer.Text = "Obtener Informe";
             this.btnExtraer.UseVisualStyleBackColor = true;
+            this.btnExtraer.Click += new System.EventHandler(this.btnExtraer_Click);
             // 
             // btnReproceso
             // 
@@ -227,6 +228,7 @@ namespace InterfazEmplames
             this.Name = "EmpalmeSaldos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmpalmeSaldos";
+            this.Load += new System.EventHandler(this.EmpalmeSaldos_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
