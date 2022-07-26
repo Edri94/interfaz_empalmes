@@ -23,13 +23,11 @@ namespace InterfazEmplames
         int conceptoDefinido;
         int producto;
 
-        private PantallaPrincipal pantallaPrincipal;
+        private PantallaPrincipal frmp;
 
         public EmpalmeSaldos()
         {
             InitializeComponent();
-
-          
         }
 
         public void PreparaPantEmpalmesAgencias(int pn_agencia)
@@ -61,8 +59,7 @@ namespace InterfazEmplames
 
                 lblStatus.Text = "Verificando carga de Saldos";
 
-                pantallaPrincipal.empalmes.gs_sql = $"SELECT error_saldos FROM {pantallaPrincipal.empalmes.DB_DESARROLLO}..PARAMETROS";
-
+                frmp.empalmes.gs_sql = $"SELECT error_saldos FROM {frmp.empalmes.DB_DESARROLLO}..PARAMETROS";
 
 
             }
@@ -76,12 +73,20 @@ namespace InterfazEmplames
 
         private void EmpalmeSaldos_Load(object sender, EventArgs e)
         {
+            btnImprimir.Visible = false;
 
+            lblFechaServidor.Text = Funcion.InvierteFecha(frmp.empalmes.sFechaHoy, false);
+            lblFechaKapiti.Text = Funcion.InvierteFecha(frmp.empalmes.sFechaHoy, false);
+            
         }
 
-        public EmpalmeSaldos(PantallaPrincipal pantallaPrincipal):this()
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pantallaPrincipal">Pasar instancia del formulario padre</param>
+        public EmpalmeSaldos(PantallaPrincipal frmp) :this()
         {
-            this.pantallaPrincipal = pantallaPrincipal;
+            this.frmp = frmp;
         }
     }
 }

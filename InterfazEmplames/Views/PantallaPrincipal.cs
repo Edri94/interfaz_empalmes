@@ -1,4 +1,6 @@
-﻿using InterfazEmplames.Processes;
+﻿using InterfazEmplames.Data;
+using InterfazEmplames.Helpers;
+using InterfazEmplames.Processes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,13 +17,85 @@ namespace InterfazEmplames
     public partial class PantallaPrincipal : Form
     {
         public Empalmes empalmes;
-
-        bool loggeado;
+        public bool loggeado;
+        public bool conectado_bd;
 
         Login form_login;
         Reporte_SaldoVencimientos form_reporte;
         Vencimientos form_vencimientos;
         EmpalmeHoldHou form_empalmeholds;
+        Encriptacion crpt;
+        ConexionBD bd;
+
+        private void PantallaPrincipal_Load(object sender, EventArgs e)
+        {
+            empalmes = new Empalmes();
+            crpt = new Encriptacion();
+
+            string lsCommandLine;
+            int lnSpacePoint;
+            string[] Parametros;
+            string rutaIni;
+
+            if (form_login == null)
+            {
+                form_login = new Login();
+
+                if (form_login != null)
+                {
+                    form_login.ShowDialog();
+
+                    loggeado = form_login.loggeado;
+
+                    EstablecrParametros();
+                    EstableceConexionBD();
+
+
+                }
+            }
+            form_login = null;
+        }
+
+        private void EstablecrParametros()
+        {
+            empalmes.DB_SVRNAME = crpt.Decrypt(Funcion.getValueAppConfig("Servidor", "BD"));
+            empalmes.GsUSer = crpt.Decrypt(Funcion.getValueAppConfig("Usuario", "BD"));
+            empalmes.lsPassword = crpt.Decrypt(Funcion.getValueAppConfig("Password", "BD"));
+            empalmes.DB_DESARROLLO = crpt.Decrypt(Funcion.getValueAppConfig("BaseDesarrollo", "BD"));
+            empalmes.DB_CATALOGOS = crpt.Decrypt(Funcion.getValueAppConfig("BaseCatalogos", "BD"));
+            empalmes.DBFUNCS = crpt.Decrypt(Funcion.getValueAppConfig("BaseFuncionarios", "BD"));
+            empalmes.GPATH = Funcion.getValueAppConfig("RutaReportes", "APP");
+            empalmes.CNNAME = Funcion.getValueAppConfig("NombreConexion", "APP");
+            empalmes.DBDSN = Funcion.getValueAppConfig("DSN", "APP");
+        }
+
+        /// <summary>
+        /// Establece conexion con la base de datos de SQL Server
+        /// </summary>
+        /// <returns></returns>
+        public bool EstableceConexionBD()
+        {
+            try
+            {
+                string conn_str = $"Data source={empalmes.DB_SVRNAME}; uid={empalmes.GsUSer}; PWD={empalmes.lsPassword}; initial catalog={empalmes.DB_DESARROLLO}";
+
+                if (bd == null)
+                {
+                    bd = new FuncionesBD(conn_str);
+                    bd.ActiveConnection = true;
+                    conectado_bd = true;
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                conectado_bd = false;
+                Log.Escribe(ex);
+            }
+
+            return false;
+        }
 
         public PantallaPrincipal()
         {
@@ -37,7 +111,7 @@ namespace InterfazEmplames
         {
             if(loggeado)
             {
-                EmpalmeSaldos form = new EmpalmeSaldos();
+                EmpalmeSaldos form = new EmpalmeSaldos(this);
                 form.MdiParent = this;
                 form.Show();
             }
@@ -72,29 +146,7 @@ namespace InterfazEmplames
             
         }
 
-        private void PantallaPrincipal_Load(object sender, EventArgs e)
-        {
-            empalmes = new Empalmes();
-
-            string lsCommandLine;
-            int lnSpacePoint;
-            string[] Parametros;
-            string rutaIni;
-
-            if (form_login == null)
-            {
-                form_login = new Login();
-
-                if (form_login != null)
-                {
-                    //form.MdiParent = this;
-                    form_login.ShowDialog();
-
-                    loggeado = form_login.loggeado;
-                }
-            }
-            form_login = null;
-        }
+       
 
         /// <summary>
         /// Abrir Formulario  Reporte Saldo de Vencimientos
@@ -176,6 +228,8 @@ namespace InterfazEmplames
                 MessageBox.Show("Primero debes iniciar sesion", "Error de permisos");
             }
         }
+
+  
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {

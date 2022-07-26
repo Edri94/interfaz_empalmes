@@ -31,8 +31,8 @@ namespace InterfazEmplames
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblFechaKapiti = new System.Windows.Forms.Label();
+            this.lblFechaServidor = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@ namespace InterfazEmplames
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnExtraer = new System.Windows.Forms.Button();
             this.btnReproceso = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
+            this.txtCuentasDiferencias = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,8 +53,8 @@ namespace InterfazEmplames
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblFechaKapiti);
+            this.panel1.Controls.Add(this.lblFechaServidor);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label2);
@@ -73,27 +73,27 @@ namespace InterfazEmplames
             this.label3.TabIndex = 0;
             this.label3.Text = "Ultima dia habil en HOU:";
             // 
-            // label5
+            // lblFechaKapiti
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label5.Location = new System.Drawing.Point(946, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 22);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "00-00-0000";
+            this.lblFechaKapiti.AutoSize = true;
+            this.lblFechaKapiti.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.lblFechaKapiti.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblFechaKapiti.Location = new System.Drawing.Point(946, 80);
+            this.lblFechaKapiti.Name = "lblFechaKapiti";
+            this.lblFechaKapiti.Size = new System.Drawing.Size(93, 22);
+            this.lblFechaKapiti.TabIndex = 0;
+            this.lblFechaKapiti.Text = "00-00-0000";
             // 
-            // label4
+            // lblFechaServidor
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Location = new System.Drawing.Point(946, 44);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 22);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "00-00-0000";
+            this.lblFechaServidor.AutoSize = true;
+            this.lblFechaServidor.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.lblFechaServidor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblFechaServidor.Location = new System.Drawing.Point(946, 44);
+            this.lblFechaServidor.Name = "lblFechaServidor";
+            this.lblFechaServidor.Size = new System.Drawing.Size(93, 22);
+            this.lblFechaServidor.TabIndex = 0;
+            this.lblFechaServidor.Text = "00-00-0000";
             // 
             // label7
             // 
@@ -189,17 +189,17 @@ namespace InterfazEmplames
             this.btnReproceso.Text = "Reproceso Saldo";
             this.btnReproceso.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // txtCuentasDiferencias
             // 
-            this.label8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.ForeColor = System.Drawing.Color.Lime;
-            this.label8.Location = new System.Drawing.Point(453, 571);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 35);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "0";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.txtCuentasDiferencias.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtCuentasDiferencias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.txtCuentasDiferencias.ForeColor = System.Drawing.Color.Lime;
+            this.txtCuentasDiferencias.Location = new System.Drawing.Point(453, 571);
+            this.txtCuentasDiferencias.Name = "txtCuentasDiferencias";
+            this.txtCuentasDiferencias.Size = new System.Drawing.Size(117, 35);
+            this.txtCuentasDiferencias.TabIndex = 2;
+            this.txtCuentasDiferencias.Text = "0";
+            this.txtCuentasDiferencias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
@@ -220,7 +220,7 @@ namespace InterfazEmplames
             this.Controls.Add(this.btnExtraer);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtCuentasDiferencias);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lstvwEmpalmeSaldos);
             this.Controls.Add(this.panel1);
@@ -240,8 +240,8 @@ namespace InterfazEmplames
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblFechaKapiti;
+        private System.Windows.Forms.Label lblFechaServidor;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
@@ -252,7 +252,7 @@ namespace InterfazEmplames
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnExtraer;
         private System.Windows.Forms.Button btnReproceso;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label txtCuentasDiferencias;
         private System.Windows.Forms.Label label10;
     }
 }

@@ -10,6 +10,13 @@ namespace InterfazEmplames.Helpers
 {
     public class Funcion
     {
+
+        /// <summary>
+        /// Obtiene valor del app.comfig
+        /// </summary>
+        /// <param name="key">key a encontrar</param>
+        /// <param name="section">si viene agrupado agregar el grupo del key, este es  un campo  opcional</param>
+        /// <returns></returns>
         public static string getValueAppConfig(string key, string section = "")
         {
             if (section.Length >= 1)
