@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CATALOGOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="APLICACION">
+    <Key>
+      <PropertyRef Name="aplicacion" />
+    </Key>
+    <Property Name="aplicacion" Type="smallint" Nullable="false" />
+    <Property Name="descripcion_aplicacion" Type="char" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="PERFIL_HEXA">
+    <Key>
+      <PropertyRef Name="perfil" />
+    </Key>
+    <Property Name="perfil" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aplicacion" Type="smallint" Nullable="false" />
+    <Property Name="nombre_perfil" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fecha_modificacion" Type="smalldatetime" Nullable="false" />
+    <Property Name="masc_permisos" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="masc_autorizaciones" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'CATALOGOS.dbo.PERMISOS_X_USUARIO_HEXA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PERMISOS_X_USUARIO_HEXA">
+    <Key>
+      <PropertyRef Name="perfil" />
+      <PropertyRef Name="usuario" />
+      <PropertyRef Name="masc_permisos" />
+      <PropertyRef Name="masc_autorizaciones" />
+    </Key>
+    <Property Name="perfil" Type="smallint" Nullable="false" />
+    <Property Name="usuario" Type="smallint" Nullable="false" />
+    <Property Name="masc_permisos" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="masc_autorizaciones" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="usuario" />
+    </Key>
+    <Property Name="usuario" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="kapiti" Type="char" MaxLength="4" />
+    <Property Name="nombre_usuario" Type="char" MaxLength="40" />
+    <Property Name="origen_usuario" Type="tinyint" />
+    <Property Name="fecha_cambio_password" Type="smalldatetime" />
+    <Property Name="fecha_ultimo_acceso" Type="smalldatetime" />
+    <Property Name="area_usuario" Type="tinyint" />
+    <Property Name="login_erroneo" Type="tinyint" />
+    <Property Name="colores1" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="colores2" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="colores3" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="adm_dd" Type="char" MaxLength="1" />
+    <Property Name="ultimo_pwd" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <Association Name="FK_PER_USR_HEXA__PERFIL_HEXA">
+    <End Role="PERFIL_HEXA" Type="Self.PERFIL_HEXA" Multiplicity="1" />
+    <End Role="PERMISOS_X_USUARIO_HEXA" Type="Self.PERMISOS_X_USUARIO_HEXA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERFIL_HEXA">
+        <PropertyRef Name="perfil" />
+      </Principal>
+      <Dependent Role="PERMISOS_X_USUARIO_HEXA">
+        <PropertyRef Name="perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PER_USR_HEXA__USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="PERMISOS_X_USUARIO_HEXA" Type="Self.PERMISOS_X_USUARIO_HEXA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="usuario" />
+      </Principal>
+      <Dependent Role="PERMISOS_X_USUARIO_HEXA">
+        <PropertyRef Name="usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CATALOGOSModelStoreContainer">
+    <EntitySet Name="APLICACION" EntityType="Self.APLICACION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERFIL_HEXA" EntityType="Self.PERFIL_HEXA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERMISOS_X_USUARIO_HEXA" EntityType="Self.PERMISOS_X_USUARIO_HEXA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PERMISOS_X_USUARIO_HEXA].[perfil] AS [perfil], 
+    [PERMISOS_X_USUARIO_HEXA].[usuario] AS [usuario], 
+    [PERMISOS_X_USUARIO_HEXA].[masc_permisos] AS [masc_permisos], 
+    [PERMISOS_X_USUARIO_HEXA].[masc_autorizaciones] AS [masc_autorizaciones]
+    FROM [dbo].[PERMISOS_X_USUARIO_HEXA] AS [PERMISOS_X_USUARIO_HEXA]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_PER_USR_HEXA__PERFIL_HEXA" Association="Self.FK_PER_USR_HEXA__PERFIL_HEXA">
+      <End Role="PERFIL_HEXA" EntitySet="PERFIL_HEXA" />
+      <End Role="PERMISOS_X_USUARIO_HEXA" EntitySet="PERMISOS_X_USUARIO_HEXA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PER_USR_HEXA__USUARIO" Association="Self.FK_PER_USR_HEXA__USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="PERMISOS_X_USUARIO_HEXA" EntitySet="PERMISOS_X_USUARIO_HEXA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

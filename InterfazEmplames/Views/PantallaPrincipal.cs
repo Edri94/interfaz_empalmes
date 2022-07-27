@@ -1,5 +1,6 @@
 ﻿using InterfazEmplames.Data;
 using InterfazEmplames.Helpers;
+using InterfazEmplames.Models;
 using InterfazEmplames.Processes;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace InterfazEmplames
         public bool loggeado;
         public bool conectado_bd;
         public Permiso permiso;
+        public USUARIO usuario_loggeado;
 
         Login form_login;
         Reporte_SaldoVencimientos form_reporte;
@@ -35,6 +37,7 @@ namespace InterfazEmplames
             empalmes = new Empalmes();
             crpt = new Encriptacion();
             permiso = new Permiso();
+            usuario_loggeado = new USUARIO();
 
             string lsCommandLine;
             int lnSpacePoint;
