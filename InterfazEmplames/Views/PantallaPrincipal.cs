@@ -19,18 +19,22 @@ namespace InterfazEmplames
         public Empalmes empalmes;
         public bool loggeado;
         public bool conectado_bd;
+        public Permiso permiso;
 
         Login form_login;
         Reporte_SaldoVencimientos form_reporte;
         Vencimientos form_vencimientos;
         EmpalmeHoldHou form_empalmeholds;
         Encriptacion crpt;
-        ConexionBD bd;
+        public FuncionesBD bd;
 
         private void PantallaPrincipal_Load(object sender, EventArgs e)
         {
+           
+
             empalmes = new Empalmes();
             crpt = new Encriptacion();
+            permiso = new Permiso();
 
             string lsCommandLine;
             int lnSpacePoint;
@@ -39,7 +43,10 @@ namespace InterfazEmplames
 
             if (form_login == null)
             {
-                form_login = new Login();
+                EstablecrParametros();
+                EstableceConexionBD();
+
+                form_login = new Login(this);
 
                 if (form_login != null)
                 {
@@ -47,10 +54,7 @@ namespace InterfazEmplames
 
                     loggeado = form_login.loggeado;
 
-                    EstablecrParametros();
-                    EstableceConexionBD();
-
-
+                    
                 }
             }
             form_login = null;

@@ -38,4 +38,3 @@ C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\Entity
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.csproj.CopyComplete
 C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll
-C:\Users\MI05332\source\repos\InterfazEmplames\InterfazEmplames\obj\Debug\InterfazEmplames.csproj.AssemblyReference.cache

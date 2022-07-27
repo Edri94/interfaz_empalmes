@@ -279,7 +279,7 @@ namespace InterfazEmplames.Data
         /// </summary>
         /// <param name="con_hora">Se desea saber la fecha con hora o no</param>
         /// <returns></returns>
-        public string obtenerFechaServidor(bool con_hora = false)
+        public string ObtenerFechaServidor(bool con_hora = false)
         {
             try
             {
@@ -307,7 +307,7 @@ namespace InterfazEmplames.Data
             }
             catch (Exception ex)
             {
-                return string.Empty;
+                return DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             }
         }
     }

@@ -13,47 +13,47 @@ namespace InterfazEmplames.Processes
 
 
         //Variables para manejo de permisos
-        private List<double> Ga_Perfiles;
-        private List<TipoPermiso> Ga_Permisos;
-        private int gn_TotalPermisos;
-        private int gn_Indice;
-        private int gn_Usuario;
-        private int gn_Origen;
-        private double gn_Accesos;
-        private int gn_Aplicacion;
-        private bool gb_Login;
-        private bool gb_CambioComentario;
+        public List<double> Ga_Perfiles;
+        public List<TipoPermiso> Ga_Permisos;
+        public int gn_TotalPermisos;
+        public int gn_Indice;
+        public int gn_Usuario;
+        public int gn_Origen;
+        public double gn_Accesos;
+        public int gn_Aplicacion;
+        public bool gb_Login;
+        public bool gb_CambioComentario;
 
         //Variables para manejo de autorizaciones
-        private List<TipoAutorizacion> ga_Autorizaciones;
-        private int gn_TotalAutorizaciones;
-        private double gn_Autorizaciones;
-        private bool gb_CambioAutorizacion;
-        private bool gb_OperacionConPassword;
-        private bool gb_Autorizacion;
-        private string gs_Autorizacion;
+        public List<TipoAutorizacion> ga_Autorizaciones;
+        public int gn_TotalAutorizaciones;
+        public double gn_Autorizaciones;
+        public bool gb_CambioAutorizacion;
+        public bool gb_OperacionConPassword;
+        public bool gb_Autorizacion;
+        public string gs_Autorizacion;
 
         //Variables para manejo de parametros de operaciones hechas con password
-        private int gn_UsuarioAutoriza;
+        public int gn_UsuarioAutoriza;
 
         //Variables para manejo de operaciones remotas
-        private string gs_Cuenta_Cliente;
-        private string gs_Comentario;
-        private string gs_Respuesta;
-        private int gn_Operacion_Definida;
-        private double gn_Monto;
-        private double gn_Tasa;
-        private int gn_Plazo;
-        private double gn_SobreTasa;
-        private List<PermisoRemoto> ga_PermisosRemotos;
-        private int gn_Peticion;
-        private int gn_IDAutorizacion;
+        public string gs_Cuenta_Cliente;
+        public string gs_Comentario;
+        public string gs_Respuesta;
+        public int gn_Operacion_Definida;
+        public double gn_Monto;
+        public double gn_Tasa;
+        public int gn_Plazo;
+        public double gn_SobreTasa;
+        public List<PermisoRemoto> ga_PermisosRemotos;
+        public int gn_Peticion;
+        public int gn_IDAutorizacion;
 
         //Constantes con numeros de operaciones que no se encuentran como Operacion Definida
-        private const byte gn_OpIndefinida = 1;
+        public const byte gn_OpIndefinida = 1;
 
         //Constante para conservar el número de la operación definida en la función Montos
-        private int gn_OpDefinida;
+        public int gn_OpDefinida;
 
         public Permiso()
         {

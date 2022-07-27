@@ -339,7 +339,7 @@ namespace InterfazEmplames.Data
             strCmd = strCommand;
 
             return dReader;
-        }
+        }     
         public class DbHelperException : Exception
         {
             private string dbhMessage;

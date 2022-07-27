@@ -31,7 +31,7 @@ namespace InterfazEmplames
         {
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAcceder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -51,15 +51,15 @@ namespace InterfazEmplames
             this.txtPass.Size = new System.Drawing.Size(263, 26);
             this.txtPass.TabIndex = 2;
             // 
-            // button1
+            // btnAcceder
             // 
-            this.button1.Location = new System.Drawing.Point(12, 139);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(370, 41);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Loggearse";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAcceder.Location = new System.Drawing.Point(12, 139);
+            this.btnAcceder.Name = "btnAcceder";
+            this.btnAcceder.Size = new System.Drawing.Size(370, 41);
+            this.btnAcceder.TabIndex = 3;
+            this.btnAcceder.Text = "Loggearse";
+            this.btnAcceder.UseVisualStyleBackColor = true;
+            this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click);
             // 
             // label1
             // 
@@ -86,7 +86,7 @@ namespace InterfazEmplames
             this.ClientSize = new System.Drawing.Size(398, 205);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAcceder);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -102,7 +102,7 @@ namespace InterfazEmplames
 
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAcceder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
