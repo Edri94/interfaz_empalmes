@@ -279,8 +279,10 @@ namespace InterfazEmplames.Data
         /// </summary>
         /// <param name="con_hora">Se desea saber la fecha con hora o no</param>
         /// <returns></returns>
-        public string ObtenerFechaServidor(bool con_hora = false)
+        public DateTime ObtenerFechaServidor(bool con_hora = false)
         {
+            DateTime fecha_actual = DateTime.Now;
+
             try
             {
                 string query;
@@ -296,19 +298,17 @@ namespace InterfazEmplames.Data
 
                 SqlDataReader dr = ejecutarConsulta(query);
 
-                string fecha_actual = string.Empty;
-
                 while (dr.Read())
                 {
-                    fecha_actual = dr.GetString(0);
+                    fecha_actual = dr.GetDateTime(0);
                 }
                 dr.Close();
-                return fecha_actual;
             }
             catch (Exception ex)
             {
-                return DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                Log.Escribe(ex); 
             }
+            return fecha_actual;
         }
     }
 

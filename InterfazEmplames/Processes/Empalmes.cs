@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.ReportSource;
+using InterfazEmplames.Models;
 using InterfazEmplames.Reports;
 
 namespace InterfazEmplames.Processes
@@ -39,7 +40,7 @@ namespace InterfazEmplames.Processes
         //Ruta donde se ejecuta la aplicacion
         public string ApliPath;
         public string gs_sql;
-        public string sFechaHoy;
+        public DateTime sFechaHoy;
         public byte gn_Linea;
         public int gn_Tarjeta;
         public int gn_Funcionario;
@@ -235,9 +236,19 @@ namespace InterfazEmplames.Processes
         /// </summary>
         /// <param name="parametro"></param>
         /// <returns></returns>
-        public string ValorParametro(string parametro)
+        public PARAMETRIZACION ValorParametro(string parametro)
         {
-            return "";
+            PARAMETRIZACION param;
+            
+            using (TICKETEntities db = new TICKETEntities())
+            {
+                param = (
+                from p in db.PARAMETRIZACION
+                where p.codigo.Trim() == parametro
+                select p
+                    ).ToList().First();
+            }
+            return param;
         }
 
         /// <summary>

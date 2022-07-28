@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TICKETModelStoreContainer" CdmEntityContainer="TICKETEntities">
+    <EntitySetMapping Name="PARAMETRIZACION">
+      <EntityTypeMapping TypeName="TICKETModel.PARAMETRIZACION">
+        <MappingFragment StoreEntitySet="PARAMETRIZACION">
+          <ScalarProperty Name="parametro" ColumnName="parametro" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha_modificacion" ColumnName="fecha_modificacion" />
+          <ScalarProperty Name="unidad_banca" ColumnName="unidad_banca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

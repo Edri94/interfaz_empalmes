@@ -13,10 +13,10 @@ namespace InterfazEmplames.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CATALOGOEntities : DbContext
+    public partial class FUNCIONARIOSEntities : DbContext
     {
-        public CATALOGOEntities()
-            : base("name=CATALOGOEntities")
+        public FUNCIONARIOSEntities()
+            : base("name=FUNCIONARIOSEntities")
         {
         }
     
@@ -25,9 +25,7 @@ namespace InterfazEmplames.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<APLICACION> APLICACION { get; set; }
-        public virtual DbSet<PERFIL_HEXA> PERFIL_HEXA { get; set; }
-        public virtual DbSet<USUARIO> USUARIO { get; set; }
-        public virtual DbSet<PERMISOS_X_USUARIO_HEXA> PERMISOS_X_USUARIO_HEXA { get; set; }
+        public virtual DbSet<FUNCIONARIO> FUNCIONARIO { get; set; }
+        public virtual DbSet<UNIDAD_ORGANIZACIONAL_RESUMEN> UNIDAD_ORGANIZACIONAL_RESUMEN { get; set; }
     }
 }

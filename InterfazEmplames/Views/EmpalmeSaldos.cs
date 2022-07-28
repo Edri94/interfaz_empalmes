@@ -75,8 +75,8 @@ namespace InterfazEmplames
         {
             btnImprimir.Visible = false;
 
-            lblFechaServidor.Text = Funcion.InvierteFecha(frmp.empalmes.sFechaHoy, false);
-            lblFechaKapiti.Text = Funcion.InvierteFecha(frmp.empalmes.sFechaHoy, false);  
+            lblFechaServidor.Text = Funcion.InvierteFecha(frmp.empalmes.sFechaHoy.ToString(), false);
+            lblFechaKapiti.Text = Funcion.InvierteFecha(frmp.empalmes.sFechaHoy.ToString(), false);  
             
         }
 

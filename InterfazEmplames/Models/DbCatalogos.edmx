@@ -185,7 +185,7 @@ advertencia 6002: La tabla o vista 'CATALOGOS.dbo.PERMISOS_X_USUARIO_HEXA' no ti
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CATALOGOEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CATALOGOSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="APLICACION" EntityType="Self.APLICACION" />
           <EntitySet Name="PERFIL_HEXA" EntityType="Self.PERFIL_HEXA" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
@@ -204,7 +204,7 @@ advertencia 6002: La tabla o vista 'CATALOGOS.dbo.PERMISOS_X_USUARIO_HEXA' no ti
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CATALOGOSModelStoreContainer" CdmEntityContainer="CATALOGOEntities">
+        <EntityContainerMapping StorageEntityContainer="CATALOGOSModelStoreContainer" CdmEntityContainer="CATALOGOSEntities">
           <EntitySetMapping Name="APLICACION">
             <EntityTypeMapping TypeName="CATALOGOSModel.APLICACION">
               <MappingFragment StoreEntitySet="APLICACION">

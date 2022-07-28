@@ -74,33 +74,72 @@
     <Compile Include="Helpers\Funcion.cs" />
     <Compile Include="Helpers\Log.cs" />
     <Compile Include="Models\APLICACION.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>DbCatalogos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB.Context.cs">
+    <Compile Include="Models\DbCatalogos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.Context.tt</DependentUpon>
+      <DependentUpon>DbCatalogos.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB.cs">
+    <Compile Include="Models\DbCatalogos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>DbCatalogos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB.Designer.cs">
+    <Compile Include="Models\DbCatalogos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.edmx</DependentUpon>
+      <DependentUpon>DbCatalogos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbFuncionarios.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbFuncionarios.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbFuncionarios.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbFuncionarios.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbFuncionarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbFuncionarios.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbTicket.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbTicket.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbTicket.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbTicket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbTicket.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbTicket.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FUNCIONARIO.cs">
+      <DependentUpon>DbFuncionarios.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\PARAMETRIZACION.cs">
+      <DependentUpon>DbTicket.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PERFIL_HEXA.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>DbCatalogos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PERMISOS_X_USUARIO_HEXA.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>DbCatalogos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QueryParametro.cs" />
+    <Compile Include="Models\UNIDAD_ORGANIZACIONAL_RESUMEN.cs">
+      <DependentUpon>DbFuncionarios.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\USUARIO.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>DbCatalogos.tt</DependentUpon>
     </Compile>
     <Compile Include="Reports\CrystalReport1.cs">
       <AutoGen>True</AutoGen>
@@ -195,12 +234,26 @@
     <EmbeddedResource Include="Views\Vencimientos.resx">
       <DependentUpon>Vencimientos.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\DB.edmx">
+    <EntityDeploy Include="Models\DbTicket.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+      <LastGenOutput>DbTicket.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\DB.edmx.diagram">
-      <DependentUpon>DB.edmx</DependentUpon>
+    <EntityDeploy Include="Models\DbCatalogos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbCatalogos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\DbCatalogos.edmx.diagram">
+      <DependentUpon>DbCatalogos.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Models\DbFuncionarios.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbFuncionarios.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\DbFuncionarios.edmx.diagram">
+      <DependentUpon>DbFuncionarios.edmx</DependentUpon>
+    </None>
+    <None Include="Models\DbTicket.edmx.diagram">
+      <DependentUpon>DbTicket.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -224,15 +277,35 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\DB.Context.tt">
+    <Content Include="Models\DbCatalogos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.Context.cs</LastGenOutput>
+      <DependentUpon>DbCatalogos.edmx</DependentUpon>
+      <LastGenOutput>DbCatalogos.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DB.tt">
+    <Content Include="Models\DbCatalogos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.cs</LastGenOutput>
+      <DependentUpon>DbCatalogos.edmx</DependentUpon>
+      <LastGenOutput>DbCatalogos.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DbFuncionarios.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbFuncionarios.edmx</DependentUpon>
+      <LastGenOutput>DbFuncionarios.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DbFuncionarios.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbFuncionarios.edmx</DependentUpon>
+      <LastGenOutput>DbFuncionarios.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DbTicket.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbTicket.edmx</DependentUpon>
+      <LastGenOutput>DbTicket.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DbTicket.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbTicket.edmx</DependentUpon>
+      <LastGenOutput>DbTicket.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

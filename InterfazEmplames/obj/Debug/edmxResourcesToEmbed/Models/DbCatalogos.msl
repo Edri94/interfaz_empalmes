@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CATALOGOSModelStoreContainer" CdmEntityContainer="CATALOGOSEntities">
+    <EntitySetMapping Name="APLICACION">
+      <EntityTypeMapping TypeName="CATALOGOSModel.APLICACION">
+        <MappingFragment StoreEntitySet="APLICACION">
+          <ScalarProperty Name="aplicacion1" ColumnName="aplicacion" />
+          <ScalarProperty Name="descripcion_aplicacion" ColumnName="descripcion_aplicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERFIL_HEXA">
+      <EntityTypeMapping TypeName="CATALOGOSModel.PERFIL_HEXA">
+        <MappingFragment StoreEntitySet="PERFIL_HEXA">
+          <ScalarProperty Name="perfil" ColumnName="perfil" />
+          <ScalarProperty Name="aplicacion" ColumnName="aplicacion" />
+          <ScalarProperty Name="nombre_perfil" ColumnName="nombre_perfil" />
+          <ScalarProperty Name="fecha_modificacion" ColumnName="fecha_modificacion" />
+          <ScalarProperty Name="masc_permisos" ColumnName="masc_permisos" />
+          <ScalarProperty Name="masc_autorizaciones" ColumnName="masc_autorizaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="CATALOGOSModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="kapiti" ColumnName="kapiti" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="origen_usuario" ColumnName="origen_usuario" />
+          <ScalarProperty Name="fecha_cambio_password" ColumnName="fecha_cambio_password" />
+          <ScalarProperty Name="fecha_ultimo_acceso" ColumnName="fecha_ultimo_acceso" />
+          <ScalarProperty Name="area_usuario" ColumnName="area_usuario" />
+          <ScalarProperty Name="login_erroneo" ColumnName="login_erroneo" />
+          <ScalarProperty Name="colores1" ColumnName="colores1" />
+          <ScalarProperty Name="colores2" ColumnName="colores2" />
+          <ScalarProperty Name="colores3" ColumnName="colores3" />
+          <ScalarProperty Name="adm_dd" ColumnName="adm_dd" />
+          <ScalarProperty Name="ultimo_pwd" ColumnName="ultimo_pwd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERMISOS_X_USUARIO_HEXA">
+      <EntityTypeMapping TypeName="CATALOGOSModel.PERMISOS_X_USUARIO_HEXA">
+        <MappingFragment StoreEntitySet="PERMISOS_X_USUARIO_HEXA">
+          <ScalarProperty Name="perfil" ColumnName="perfil" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="masc_permisos" ColumnName="masc_permisos" />
+          <ScalarProperty Name="masc_autorizaciones" ColumnName="masc_autorizaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,4 +1,5 @@
-﻿using InterfazEmplames.Models;
+﻿using InterfazEmplames.Helpers;
+using InterfazEmplames.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace InterfazEmplames.Processes
 {
     public class Permiso
     {
-
+        public const string DESC_APLICACION = "EmpalmesAgencias";
 
         //Variables para manejo de permisos
         public List<double> Ga_Perfiles;
@@ -226,9 +227,25 @@ namespace InterfazEmplames.Processes
         /// <summary>
         /// Regresa el numero con que se encuentra registrada la aplicacion
         /// </summary>
-        public int NumAplicacion()
+        public APLICACION NumAplicacion()
         {
-            return 0;
+            APLICACION app = null;
+            try
+            {
+                using(CATALOGOSEntities db = new CATALOGOSEntities())
+                {
+                    app = (
+                        from aplicacion in db.APLICACION
+                        where aplicacion.descripcion_aplicacion.Trim() == DESC_APLICACION
+                        select aplicacion).ToList().First();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Escribe(ex);
+            }
+
+            return app;
         }
 
         /// <summary>

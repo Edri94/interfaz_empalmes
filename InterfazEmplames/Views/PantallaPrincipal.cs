@@ -22,6 +22,7 @@ namespace InterfazEmplames
         public bool conectado_bd;
         public Permiso permiso;
         public USUARIO usuario_loggeado;
+        public APLICACION app;
 
         Login form_login;
         Reporte_SaldoVencimientos form_reporte;
@@ -38,6 +39,7 @@ namespace InterfazEmplames
             crpt = new Encriptacion();
             permiso = new Permiso();
             usuario_loggeado = new USUARIO();
+            app = new APLICACION();
 
             string lsCommandLine;
             int lnSpacePoint;

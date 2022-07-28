@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TICKETModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PARAMETRIZACION">
+    <Key>
+      <PropertyRef Name="parametro" />
+    </Key>
+    <Property Name="parametro" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="valor" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="codigo" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_modificacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="unidad_banca" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="TICKETEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PARAMETRIZACION" EntityType="Self.PARAMETRIZACION" />
+  </EntityContainer>
+</Schema>

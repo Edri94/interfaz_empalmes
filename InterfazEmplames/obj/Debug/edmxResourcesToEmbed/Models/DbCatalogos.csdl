@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CATALOGOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="APLICACION">
+    <Key>
+      <PropertyRef Name="aplicacion1" />
+    </Key>
+    <Property Name="aplicacion1" Type="Int16" Nullable="false" />
+    <Property Name="descripcion_aplicacion" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PERFIL_HEXA">
+    <Key>
+      <PropertyRef Name="perfil" />
+    </Key>
+    <Property Name="perfil" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aplicacion" Type="Int16" Nullable="false" />
+    <Property Name="nombre_perfil" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_modificacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="masc_permisos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="masc_autorizaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PERMISOS_X_USUARIO_HEXA" Relationship="Self.FK_PER_USR_HEXA__PERFIL_HEXA" FromRole="PERFIL_HEXA" ToRole="PERMISOS_X_USUARIO_HEXA" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="usuario1" />
+    </Key>
+    <Property Name="usuario1" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kapiti" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="nombre_usuario" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+    <Property Name="origen_usuario" Type="Byte" />
+    <Property Name="fecha_cambio_password" Type="DateTime" Precision="0" />
+    <Property Name="fecha_ultimo_acceso" Type="DateTime" Precision="0" />
+    <Property Name="area_usuario" Type="Byte" />
+    <Property Name="login_erroneo" Type="Byte" />
+    <Property Name="colores1" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="colores2" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="colores3" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adm_dd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ultimo_pwd" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PERMISOS_X_USUARIO_HEXA" Relationship="Self.FK_PER_USR_HEXA__USUARIO" FromRole="USUARIO" ToRole="PERMISOS_X_USUARIO_HEXA" />
+  </EntityType>
+  <EntityType Name="PERMISOS_X_USUARIO_HEXA">
+    <Key>
+      <PropertyRef Name="perfil" />
+      <PropertyRef Name="usuario" />
+      <PropertyRef Name="masc_permisos" />
+      <PropertyRef Name="masc_autorizaciones" />
+    </Key>
+    <Property Name="perfil" Type="Int16" Nullable="false" />
+    <Property Name="usuario" Type="Int16" Nullable="false" />
+    <Property Name="masc_permisos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="masc_autorizaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PERFIL_HEXA" Relationship="Self.FK_PER_USR_HEXA__PERFIL_HEXA" FromRole="PERMISOS_X_USUARIO_HEXA" ToRole="PERFIL_HEXA" />
+    <NavigationProperty Name="USUARIO1" Relationship="Self.FK_PER_USR_HEXA__USUARIO" FromRole="PERMISOS_X_USUARIO_HEXA" ToRole="USUARIO" />
+  </EntityType>
+  <Association Name="FK_PER_USR_HEXA__PERFIL_HEXA">
+    <End Role="PERFIL_HEXA" Type="Self.PERFIL_HEXA" Multiplicity="1" />
+    <End Role="PERMISOS_X_USUARIO_HEXA" Type="Self.PERMISOS_X_USUARIO_HEXA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERFIL_HEXA">
+        <PropertyRef Name="perfil" />
+      </Principal>
+      <Dependent Role="PERMISOS_X_USUARIO_HEXA">
+        <PropertyRef Name="perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PER_USR_HEXA__USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="PERMISOS_X_USUARIO_HEXA" Type="Self.PERMISOS_X_USUARIO_HEXA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="usuario1" />
+      </Principal>
+      <Dependent Role="PERMISOS_X_USUARIO_HEXA">
+        <PropertyRef Name="usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CATALOGOSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="APLICACION" EntityType="Self.APLICACION" />
+    <EntitySet Name="PERFIL_HEXA" EntityType="Self.PERFIL_HEXA" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <EntitySet Name="PERMISOS_X_USUARIO_HEXA" EntityType="Self.PERMISOS_X_USUARIO_HEXA" />
+    <AssociationSet Name="FK_PER_USR_HEXA__PERFIL_HEXA" Association="Self.FK_PER_USR_HEXA__PERFIL_HEXA">
+      <End Role="PERFIL_HEXA" EntitySet="PERFIL_HEXA" />
+      <End Role="PERMISOS_X_USUARIO_HEXA" EntitySet="PERMISOS_X_USUARIO_HEXA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PER_USR_HEXA__USUARIO" Association="Self.FK_PER_USR_HEXA__USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="PERMISOS_X_USUARIO_HEXA" EntitySet="PERMISOS_X_USUARIO_HEXA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
