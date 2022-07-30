@@ -28,6 +28,7 @@ namespace InterfazEmplames.Models
         public virtual DbSet<APLICACION> APLICACION { get; set; }
         public virtual DbSet<PERFIL_HEXA> PERFIL_HEXA { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
+        public virtual DbSet<BITACORA_IDENTIFICACION> BITACORA_IDENTIFICACION { get; set; }
         public virtual DbSet<PERMISOS_X_USUARIO_HEXA> PERMISOS_X_USUARIO_HEXA { get; set; }
     }
 }

@@ -21,12 +21,21 @@ namespace InterfazEmplames
         private SqlDataReader dr;
         private Encriptacion crpt;
 
+        //Instancias DB EntityFramework
+        CATALOGOSEntities dbCatalogos;
+        TICKETEntities dbTicket;
+        FUNCIONARIOSEntities dbFuncionarios;
+
         private PantallaPrincipal frmp;
 
         public Login(PantallaPrincipal frmp) : this()
         {
             this.frmp = frmp;
             crpt = new Encriptacion();
+
+            dbCatalogos = new CATALOGOSEntities();
+            dbTicket = new TICKETEntities();
+            dbFuncionarios = new FUNCIONARIOSEntities();
         }
 
         public Login()
@@ -53,7 +62,7 @@ namespace InterfazEmplames
             string lsFechaPassword;
             string lsFechaUltimoAcceso;
             string lsNombre;
-            int lnErroresLog;
+            byte lnErroresLog;
 
             frmp.empalmes.sFechaHoy = frmp.bd.ObtenerFechaServidor();
             frmp.empalmes.gn_Linea = 0;
@@ -66,14 +75,13 @@ namespace InterfazEmplames
             frmp.permiso.gn_Autorizaciones = 0;
 
             //Consulta de usuario
-            using(CATALOGOSEntities db = new CATALOGOSEntities())
-            {
-                frmp.usuario_loggeado = (
-                    from usr in db.USUARIO
-                    where usr.login.Trim() == txtUser.Text.Trim()
-                          select usr).ToList().First();
+
+            frmp.usuario_loggeado = (
+                from usr in dbCatalogos.USUARIO
+                where usr.login.Trim() == txtUser.Text.Trim()
+                        select usr).ToList().First();
  
-            }
+            
 
             //Validando estado del usuario
             if(frmp.usuario_loggeado.password.Contains("BLOQUEAR"))
@@ -89,57 +97,86 @@ namespace InterfazEmplames
             if(crpt.Decrypt(frmp.usuario_loggeado.password) == txtPass.Text)
             {
                 frmp.app = frmp.permiso.NumAplicacion();
-                using (CATALOGOSEntities db = new CATALOGOSEntities())
+              
+                if (frmp.app != null)
                 {
-                    if (frmp.app != null)
-                    {
                     
-                        PERMISOS_X_USUARIO_HEXA perfil_usuario = (
-                        from pu in db.PERMISOS_X_USUARIO_HEXA
-                        join pf in db.PERFIL_HEXA on pu.perfil equals pf.perfil
-                        where 
-                            pf.aplicacion == frmp.app.aplicacion1 && pu.usuario == frmp.usuario_loggeado.usuario1
-                        select pu
-                        ).ToList().First();
+                    PERMISOS_X_USUARIO_HEXA perfil_usuario = (
+                    from pu in dbCatalogos.PERMISOS_X_USUARIO_HEXA
+                    join pf in dbCatalogos.PERFIL_HEXA on pu.perfil equals pf.perfil
+                    where 
+                        pf.aplicacion == frmp.app.aplicacion1 && pu.usuario == frmp.usuario_loggeado.usuario1
+                    select pu
+                    ).ToList().First();
 
-                        if(frmp.usuario_loggeado.fecha_cambio_password != null)
-                        {
-                            if (frmp.usuario_loggeado.fecha_cambio_password.Value.AddDays(Int32.Parse(frmp.empalmes.ValorParametro("CAMBIO_PASSW").valor)) <= frmp.empalmes.sFechaHoy)
-                            {
-                                MessageBox.Show("Por seguridad es necesario que cambie su password.", "Cambio de password",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }                          
-                        }
-                        //Si no se tiene una fecha valida se fija la de hoy
-                        else
-                        {
-                            //USUARIO usr = db.USUARIO.SingleOrDefault(u => u.login.Trim() == txtUser.Text.Trim());
-                            frmp.usuario_loggeado.fecha_cambio_password = frmp.empalmes.sFechaHoy;
-                            frmp.usuario_loggeado.nombre_usuario = "EDRI ALAN ANGULO ARTEAGA";
-                            db.Entry(frmp.usuario_loggeado).State = System.Data.Entity.EntityState.Modified;
-                            db.SaveChanges();
-                        }
-
-                        //Verfica si el password en BANCO001 pide que se cambie.
-                        if(txtPass.Text.Contains("Banco001"))
-                        {
-                            MessageBox.Show("Por seguridad es necesario que cambie su password.", "Cambio de password", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-
-                    //Actualizando ultimo acceso usuario
-                    frmp.usuario_loggeado.fecha_ultimo_acceso = frmp.empalmes.sFechaHoy;
-                    db.Entry(frmp.usuario_loggeado).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-
-                    if(frmp.usuario_loggeado.origen_usuario == 4 || frmp.usuario_loggeado.origen_usuario == 6)
+                    if(frmp.usuario_loggeado.fecha_cambio_password != null)
                     {
-
+                        if (frmp.usuario_loggeado.fecha_cambio_password.Value.AddDays(Int32.Parse(frmp.empalmes.ValorParametro("CAMBIO_PASSW").valor)) <= frmp.empalmes.sFechaHoy)
+                        {
+                            MessageBox.Show("Por seguridad es necesario que cambie su password.", "Cambio de password",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }                          
+                    }
+                    //Si no se tiene una fecha valida se fija la de hoy
+                    else
+                    {                       
+                        frmp.usuario_loggeado.fecha_cambio_password = frmp.empalmes.sFechaHoy;
+                        dbCatalogos.Entry(frmp.usuario_loggeado).State = System.Data.Entity.EntityState.Modified;
+                        dbCatalogos.SaveChanges();
                     }
 
+                    //Verfica si el password en BANCO001 pide que se cambie.
+                    if(txtPass.Text.Contains("Banco001"))
+                    {
+                        MessageBox.Show("Por seguridad es necesario que cambie su password.", "Cambio de password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+
+                //Actualizando ultimo acceso usuario
+                frmp.usuario_loggeado.fecha_ultimo_acceso = frmp.empalmes.sFechaHoy;
+                dbCatalogos.Entry(frmp.usuario_loggeado).State = System.Data.Entity.EntityState.Modified;
+                dbCatalogos.SaveChanges();
+
+                //Si es de platino o puebla busca su func. y trata de registrarlo como funcionario con tarjeta, si no se queda como MNI
+                if (frmp.usuario_loggeado.origen_usuario == 4 || frmp.usuario_loggeado.origen_usuario == 6)
+                {
+                    gs_sql = "Select f.funcionario From FUNCIONARIOS..FUNCIONARIO f, FUNCIONARIOS.Funcionario.UNIDAD_ORGANIZACIONAL_RESUMEN u Where rtrim(nombre_funcionario)+' '+ rtrim(apellido_paterno)+' '+ rtrim(apellido_materno) like '%%' and f.funcionario = u.funcionario ";
+
+                    frmp.func = (
+                        from f in dbFuncionarios.FUNCIONARIO
+                        join u in dbFuncionarios.UNIDAD_ORGANIZACIONAL_RESUMEN on f.funcionario1 equals u.funcionario
+                        where f.nombre_funcionario + " " + f.apellido_paterno + " " + f.apellido_materno == frmp.usuario_loggeado.nombre_usuario
+                        select f
+                    ).ToList().First();
+                }
+
+                BITACORA_IDENTIFICACION bitacora_identificacion = new BITACORA_IDENTIFICACION();
+
+                bitacora_identificacion.tarjeta = 0;
+                bitacora_identificacion.fecha_registro = frmp.empalmes.sFechaHoy;
+                bitacora_identificacion.funcionario = frmp.func.funcionario1;
+                bitacora_identificacion.usuario = frmp.usuario_loggeado.usuario1;
+                bitacora_identificacion.tipo_log = 4;
+                bitacora_identificacion.detalle = Environment.UserName; 
+    
+            }
+            //Si el password del usuario no corresponde
+            else
+            {
+                USUARIO usuario_erroneo = dbCatalogos.USUARIO.SingleOrDefault(u => u.login.Trim() == txtUser.Text.Trim());
+
+                int errores = (int)usuario_erroneo.login_erroneo + 1;
+
+                usuario_erroneo.login_erroneo = (byte)errores;
+                dbCatalogos.Entry(frmp.usuario_loggeado).State = System.Data.Entity.EntityState.Modified;
+                dbCatalogos.SaveChanges();
+
+
+
+
+
             }
 
-            
+
 
         }
     }

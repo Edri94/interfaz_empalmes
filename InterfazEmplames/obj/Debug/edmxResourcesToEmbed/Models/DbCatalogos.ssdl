@@ -7,6 +7,23 @@
     <Property Name="aplicacion" Type="smallint" Nullable="false" />
     <Property Name="descripcion_aplicacion" Type="char" MaxLength="20" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'CATALOGOS.dbo.BITACORA_IDENTIFICACION' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="BITACORA_IDENTIFICACION">
+    <Key>
+      <PropertyRef Name="bitacora_ident" />
+      <PropertyRef Name="fecha_registro" />
+      <PropertyRef Name="usuario" />
+      <PropertyRef Name="tipo_log" />
+    </Key>
+    <Property Name="bitacora_ident" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tarjeta" Type="int" />
+    <Property Name="fecha_registro" Type="smalldatetime" Nullable="false" />
+    <Property Name="funcionario" Type="int" />
+    <Property Name="usuario" Type="smallint" Nullable="false" />
+    <Property Name="tipo_log" Type="int" Nullable="false" />
+    <Property Name="detalle" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="PERFIL_HEXA">
     <Key>
       <PropertyRef Name="perfil" />
@@ -52,6 +69,18 @@ advertencia 6002: La tabla o vista 'CATALOGOS.dbo.PERMISOS_X_USUARIO_HEXA' no ti
     <Property Name="adm_dd" Type="char" MaxLength="1" />
     <Property Name="ultimo_pwd" Type="varchar" MaxLength="45" />
   </EntityType>
+  <Association Name="FK_BITACORA_IDENTIFICACIO1__14">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="BITACORA_IDENTIFICACION" Type="Self.BITACORA_IDENTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="usuario" />
+      </Principal>
+      <Dependent Role="BITACORA_IDENTIFICACION">
+        <PropertyRef Name="usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PER_USR_HEXA__PERFIL_HEXA">
     <End Role="PERFIL_HEXA" Type="Self.PERFIL_HEXA" Multiplicity="1" />
     <End Role="PERMISOS_X_USUARIO_HEXA" Type="Self.PERMISOS_X_USUARIO_HEXA" Multiplicity="*" />
@@ -80,6 +109,17 @@ advertencia 6002: La tabla o vista 'CATALOGOS.dbo.PERMISOS_X_USUARIO_HEXA' no ti
     <EntitySet Name="APLICACION" EntityType="Self.APLICACION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PERFIL_HEXA" EntityType="Self.PERFIL_HEXA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BITACORA_IDENTIFICACION" EntityType="Self.BITACORA_IDENTIFICACION" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BITACORA_IDENTIFICACION].[bitacora_ident] AS [bitacora_ident], 
+    [BITACORA_IDENTIFICACION].[tarjeta] AS [tarjeta], 
+    [BITACORA_IDENTIFICACION].[fecha_registro] AS [fecha_registro], 
+    [BITACORA_IDENTIFICACION].[funcionario] AS [funcionario], 
+    [BITACORA_IDENTIFICACION].[usuario] AS [usuario], 
+    [BITACORA_IDENTIFICACION].[tipo_log] AS [tipo_log], 
+    [BITACORA_IDENTIFICACION].[detalle] AS [detalle]
+    FROM [dbo].[BITACORA_IDENTIFICACION] AS [BITACORA_IDENTIFICACION]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="PERMISOS_X_USUARIO_HEXA" EntityType="Self.PERMISOS_X_USUARIO_HEXA" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [PERMISOS_X_USUARIO_HEXA].[perfil] AS [perfil], 
@@ -88,6 +128,10 @@ advertencia 6002: La tabla o vista 'CATALOGOS.dbo.PERMISOS_X_USUARIO_HEXA' no ti
     [PERMISOS_X_USUARIO_HEXA].[masc_autorizaciones] AS [masc_autorizaciones]
     FROM [dbo].[PERMISOS_X_USUARIO_HEXA] AS [PERMISOS_X_USUARIO_HEXA]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_BITACORA_IDENTIFICACIO1__14" Association="Self.FK_BITACORA_IDENTIFICACIO1__14">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="BITACORA_IDENTIFICACION" EntitySet="BITACORA_IDENTIFICACION" />
+    </AssociationSet>
     <AssociationSet Name="FK_PER_USR_HEXA__PERFIL_HEXA" Association="Self.FK_PER_USR_HEXA__PERFIL_HEXA">
       <End Role="PERFIL_HEXA" EntitySet="PERFIL_HEXA" />
       <End Role="PERMISOS_X_USUARIO_HEXA" EntitySet="PERMISOS_X_USUARIO_HEXA" />

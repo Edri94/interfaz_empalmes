@@ -76,6 +76,9 @@
     <Compile Include="Models\APLICACION.cs">
       <DependentUpon>DbCatalogos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BITACORA_IDENTIFICACION.cs">
+      <DependentUpon>DbCatalogos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DbCatalogos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -238,6 +241,10 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DbTicket.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Models\DbFuncionarios.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbFuncionarios.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <EntityDeploy Include="Models\DbCatalogos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DbCatalogos.Designer.cs</LastGenOutput>
@@ -245,10 +252,6 @@
     <None Include="Models\DbCatalogos.edmx.diagram">
       <DependentUpon>DbCatalogos.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="Models\DbFuncionarios.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbFuncionarios.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Models\DbFuncionarios.edmx.diagram">
       <DependentUpon>DbFuncionarios.edmx</DependentUpon>
     </None>

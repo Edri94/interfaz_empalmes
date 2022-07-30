@@ -17,6 +17,7 @@ namespace InterfazEmplames.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USUARIO()
         {
+            this.BITACORA_IDENTIFICACION = new HashSet<BITACORA_IDENTIFICACION>();
             this.PERMISOS_X_USUARIO_HEXA = new HashSet<PERMISOS_X_USUARIO_HEXA>();
         }
     
@@ -36,6 +37,8 @@ namespace InterfazEmplames.Models
         public string adm_dd { get; set; }
         public string ultimo_pwd { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BITACORA_IDENTIFICACION> BITACORA_IDENTIFICACION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PERMISOS_X_USUARIO_HEXA> PERMISOS_X_USUARIO_HEXA { get; set; }
     }

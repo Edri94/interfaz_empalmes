@@ -211,22 +211,25 @@ namespace InterfazEmplames.Data
 
         public SqlDataReader ejecutarConsulta(string query)
         {
+
             try
             {
+                cnnConexion.CloseDataReader();
+
                 cnnConexion.ActiveConnection = true;
                 cnnConexion.ParametersContains = false;
                 cnnConexion.CommandType = CommandType.Text;
                 cnnConexion.ActiveConnection = true;
 
-                SqlDataReader sqlRecord = cnnConexion.ExecuteDataReader(query);
-
-                return sqlRecord;
+                return cnnConexion.ExecuteDataReader(query);
             }
             catch (Exception ex)
             {
                 Log.Escribe(ex);
                 return null;
+
             }
+            
         }
 
         public SqlDataReader ejecutarConsultaParametros(string query, SqlParameter[] sqlParameters)
@@ -279,24 +282,13 @@ namespace InterfazEmplames.Data
         /// </summary>
         /// <param name="con_hora">Se desea saber la fecha con hora o no</param>
         /// <returns></returns>
-        public DateTime ObtenerFechaServidor(bool con_hora = false)
+        public DateTime ObtenerFechaServidor()
         {
             DateTime fecha_actual = DateTime.Now;
 
             try
             {
-                string query;
-
-                if (con_hora)
-                {
-                    query = "select FORMAT(GETDATE(), 'yyyy-MM-dd hh:mm:ss')  as [fecha_actual]";
-                }
-                else
-                {
-                    query = "select FORMAT(GETDATE(), 'yyyy-MM-dd')  as [fecha_actual]";
-                }
-
-                SqlDataReader dr = ejecutarConsulta(query);
+                SqlDataReader dr = ejecutarConsulta("SELECT GETDATE() as [fecha_actual]");
 
                 while (dr.Read())
                 {

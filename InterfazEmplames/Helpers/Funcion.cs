@@ -30,6 +30,13 @@ namespace InterfazEmplames.Helpers
 
         }
 
+        /// <summary>
+        /// Escribir parametro en el app.config
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="section"></param>
+        /// <returns></returns>
         public static bool SetParameterAppSettings(string key, string value, string section = "")
         {
             string nombre_appconfig = "Interfaz_SaldosDiarios.exe.config";
@@ -72,6 +79,14 @@ namespace InterfazEmplames.Helpers
 
         }
 
+        /// <summary>
+        /// Remplazo de valores en un archivo
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="archivo"></param>
+        /// <param name="ruta_archivo"></param>
+        /// <returns></returns>
         public static bool SetParameterTransfer(string key, string value, string archivo, string ruta_archivo)
         {
             try
@@ -101,21 +116,41 @@ namespace InterfazEmplames.Helpers
 
         }
 
+        /// <summary>
+        /// Obtiene la cadena desde la posicion 0 a la derecha
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <param name="posiciones"></param>
+        /// <returns></returns>
         public static string Left(string cadena, int posiciones)
         {
             return cadena.Substring(0, posiciones);
         }
 
 
+        /// <summary>
+        /// Obtiene una cadena indicando el inicio y fin de la posicion
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <param name="start"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
         public static string Mid(string cadena, int start, int length)
         {
             return cadena.Substring(start, length);
         }
 
+        /// <summary>
+        /// Obtiene la cadena desde la  ultima posicion a la izquierda 
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <param name="posiciones"></param>
+        /// <returns></returns>
         public static string Right(string cadena, int posiciones)
         {
             return cadena.Substring((cadena.Length - posiciones), posiciones);
         }
+
 
         public static string InvierteFecha(string fecha, bool con_hora)
         {
@@ -149,6 +184,11 @@ namespace InterfazEmplames.Helpers
 
         }
 
+        /// <summary>
+        /// Devuelve una cadena con espacios
+        /// </summary>
+        /// <param name="n_espacios"></param>
+        /// <returns></returns>
         public static string Space(int n_espacios)
         {
             char espacio = ' ';
@@ -162,6 +202,12 @@ namespace InterfazEmplames.Helpers
             return cadena;
         }
 
+        /// <summary>
+        /// Busca cadena en un arreglo 
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <param name="busqueda"></param>
+        /// <returns></returns>
         public static bool Contains(string cadena, string[] busqueda)
         {
             foreach (string texto in busqueda)
@@ -171,6 +217,11 @@ namespace InterfazEmplames.Helpers
             return false;
         }
 
+        /// <summary>
+        /// Valida si es un numero la cadena dada
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns></returns>
         public static bool IsNumeric(string cadena)
         {
             int n;
@@ -178,5 +229,6 @@ namespace InterfazEmplames.Helpers
 
             return isNumeric;
         }
+
     }
 }

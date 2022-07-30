@@ -42,6 +42,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BITACORA_IDENTIFICACION">
+      <EntityTypeMapping TypeName="CATALOGOSModel.BITACORA_IDENTIFICACION">
+        <MappingFragment StoreEntitySet="BITACORA_IDENTIFICACION">
+          <ScalarProperty Name="bitacora_ident" ColumnName="bitacora_ident" />
+          <ScalarProperty Name="tarjeta" ColumnName="tarjeta" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="funcionario" ColumnName="funcionario" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="tipo_log" ColumnName="tipo_log" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="PERMISOS_X_USUARIO_HEXA">
       <EntityTypeMapping TypeName="CATALOGOSModel.PERMISOS_X_USUARIO_HEXA">
         <MappingFragment StoreEntitySet="PERMISOS_X_USUARIO_HEXA">

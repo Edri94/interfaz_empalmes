@@ -23,6 +23,7 @@ namespace InterfazEmplames
         public Permiso permiso;
         public USUARIO usuario_loggeado;
         public APLICACION app;
+        public FUNCIONARIO func;
 
         Login form_login;
         Reporte_SaldoVencimientos form_reporte;
@@ -40,6 +41,7 @@ namespace InterfazEmplames
             permiso = new Permiso();
             usuario_loggeado = new USUARIO();
             app = new APLICACION();
+            func = new FUNCIONARIO();
 
             string lsCommandLine;
             int lnSpacePoint;

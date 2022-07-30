@@ -4,12 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="efb19114dc81456abeaaa650ee7cc3c0" Name="Diagram1">
-        <EntityTypeShape EntityType="CATALOGOSModel.APLICACION" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CATALOGOSModel.PERFIL_HEXA" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CATALOGOSModel.USUARIO" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="CATALOGOSModel.PERMISOS_X_USUARIO_HEXA" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="bda96cab439e4d1fa811591f9e9b5fa6" Name="Diagram1">
+        <EntityTypeShape EntityType="CATALOGOSModel.APLICACION" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CATALOGOSModel.PERFIL_HEXA" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CATALOGOSModel.USUARIO" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CATALOGOSModel.BITACORA_IDENTIFICACION" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CATALOGOSModel.PERMISOS_X_USUARIO_HEXA" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
         <AssociationConnector Association="CATALOGOSModel.FK_PER_USR_HEXA__PERFIL_HEXA" ManuallyRouted="false" />
+        <AssociationConnector Association="CATALOGOSModel.FK_BITACORA_IDENTIFICACIO1__14" ManuallyRouted="false" />
         <AssociationConnector Association="CATALOGOSModel.FK_PER_USR_HEXA__USUARIO" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

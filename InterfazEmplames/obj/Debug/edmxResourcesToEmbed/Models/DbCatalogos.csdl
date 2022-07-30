@@ -38,7 +38,24 @@
     <Property Name="colores3" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="adm_dd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="ultimo_pwd" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BITACORA_IDENTIFICACION" Relationship="Self.FK_BITACORA_IDENTIFICACIO1__14" FromRole="USUARIO" ToRole="BITACORA_IDENTIFICACION" />
     <NavigationProperty Name="PERMISOS_X_USUARIO_HEXA" Relationship="Self.FK_PER_USR_HEXA__USUARIO" FromRole="USUARIO" ToRole="PERMISOS_X_USUARIO_HEXA" />
+  </EntityType>
+  <EntityType Name="BITACORA_IDENTIFICACION">
+    <Key>
+      <PropertyRef Name="bitacora_ident" />
+      <PropertyRef Name="fecha_registro" />
+      <PropertyRef Name="usuario" />
+      <PropertyRef Name="tipo_log" />
+    </Key>
+    <Property Name="bitacora_ident" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tarjeta" Type="Int32" />
+    <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="funcionario" Type="Int32" />
+    <Property Name="usuario" Type="Int16" Nullable="false" />
+    <Property Name="tipo_log" Type="Int32" Nullable="false" />
+    <Property Name="detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO1" Relationship="Self.FK_BITACORA_IDENTIFICACIO1__14" FromRole="BITACORA_IDENTIFICACION" ToRole="USUARIO" />
   </EntityType>
   <EntityType Name="PERMISOS_X_USUARIO_HEXA">
     <Key>
@@ -66,6 +83,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_BITACORA_IDENTIFICACIO1__14">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="BITACORA_IDENTIFICACION" Type="Self.BITACORA_IDENTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="usuario1" />
+      </Principal>
+      <Dependent Role="BITACORA_IDENTIFICACION">
+        <PropertyRef Name="usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PER_USR_HEXA__USUARIO">
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
     <End Role="PERMISOS_X_USUARIO_HEXA" Type="Self.PERMISOS_X_USUARIO_HEXA" Multiplicity="*" />
@@ -82,10 +111,15 @@
     <EntitySet Name="APLICACION" EntityType="Self.APLICACION" />
     <EntitySet Name="PERFIL_HEXA" EntityType="Self.PERFIL_HEXA" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <EntitySet Name="BITACORA_IDENTIFICACION" EntityType="Self.BITACORA_IDENTIFICACION" />
     <EntitySet Name="PERMISOS_X_USUARIO_HEXA" EntityType="Self.PERMISOS_X_USUARIO_HEXA" />
     <AssociationSet Name="FK_PER_USR_HEXA__PERFIL_HEXA" Association="Self.FK_PER_USR_HEXA__PERFIL_HEXA">
       <End Role="PERFIL_HEXA" EntitySet="PERFIL_HEXA" />
       <End Role="PERMISOS_X_USUARIO_HEXA" EntitySet="PERMISOS_X_USUARIO_HEXA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BITACORA_IDENTIFICACIO1__14" Association="Self.FK_BITACORA_IDENTIFICACIO1__14">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="BITACORA_IDENTIFICACION" EntitySet="BITACORA_IDENTIFICACION" />
     </AssociationSet>
     <AssociationSet Name="FK_PER_USR_HEXA__USUARIO" Association="Self.FK_PER_USR_HEXA__USUARIO">
       <End Role="USUARIO" EntitySet="USUARIO" />
